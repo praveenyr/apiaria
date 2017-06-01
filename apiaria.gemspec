@@ -6,10 +6,9 @@ Gem::Specification.new do |s|
    s.description   = 'A client for the Bloc API'
    s.authors       = ['Praveen Yallakara']
    s.email         = 'praveenyr@gmail.com'
-   s.files         = ['./lib/apiaria']
+   s.files         = ['lib/apiaria.rb']
    s.require_paths = ["lib"]
-   s.homepage      =
-     'http://rubygems.org/gems/apiaria'
+   s.homepage      = 'http://rubygems.org/gems/apiaria'
    s.license       = 'MIT'
    s.add_runtime_dependency 'httparty', '~> 0.13'
 end

@@ -4,12 +4,13 @@ class Apiaria
   
   base_uri "https://www.bloc.io/api/v1"
   
+  attr_accessor :auth_token
+  
   def initialize(email, password)
     @email = email
     @password = password
-    body = { email: @email, password: @password }
-    # response = self.class.post("/sessions", :body => { :email => @email, :password => @password })
-    response = self.class.post("/sessions", body: body)
+    options =  { body: { email: @email, password: @password } }
+    response = self.class.post("/sessions", options)
     @auth_token = response["auth_token"]
   end
   
