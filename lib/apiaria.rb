@@ -1,7 +1,9 @@
 class Apiaria
+  require './lib/roadmap.rb'
   require 'httparty'
   require 'json'
   include HTTParty
+  include Roadmap
   
   base_uri "https://www.bloc.io/api/v1"
   
