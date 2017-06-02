@@ -20,4 +20,10 @@ class Apiaria
     JSON.parse(response.body)
   end
   
+  def get_mentor_availability(mentor_id)
+    url = "/mentors/" + mentor_id.to_s + "/student_availability"
+    response = self.class.get(url,  headers: { "authorization" => @auth_token })
+    JSON.parse(response.body)
+  end
+  
 end
