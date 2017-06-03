@@ -28,4 +28,27 @@ class Apiaria
     JSON.parse(response.body)
   end
   
+  def get_messages(pageNum = nil)
+    unless pageNum
+      response = self.class.get("/message_threads",  headers: { "authorization" => @auth_token })
+      JSON.parse(response.body)
+    else
+      url = "/message_threads?page=" + pageNum.to_s
+      response = self.class.get(url,  headers: { "authorization" => @auth_token })
+      JSON.parse(response.body)
+    end
+  end
+
+  def create_message(sender, recipientId, body, options = {})
+    args = {}
+    args["sender"] = sender
+    args["recipient_id"] = recipientId
+    args["token"] = options[:token] unless options[:token] == nil
+    args["subject"] = options[:subject] unless options[:subject] == nil
+    args["stripped-text"] = body
+    
+    response = self.class.post("/messages", body: args.to_json, headers: { "authorization" => @auth_token } )
+    JSON.parse(response.body)
+  end
+  
 end
