@@ -61,4 +61,16 @@ class Apiaria
     JSON.parse(response.body)
   end
   
+  def create_submission(checkpoint_id, assignment_branch, assignment_commit_link, comment)
+    values = {
+      "assignment_branch": assignment_branch,
+      "assignment_commit_link": assignment_commit_link,
+      "checkpoint_id": checkpoint_id,
+      "comment": comment,
+      "enrollment_id": 24575,
+    }
+    response = self.class.post("/checkpoint_submissions", body: values, headers: { "authorization" => @auth_token } )
+    JSON.parse(response.body)
+  end
+  
 end
